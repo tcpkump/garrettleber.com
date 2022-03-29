@@ -25,5 +25,5 @@ jobs:
     - id: 'upload-folder'
       uses: 'google-github-actions/upload-cloud-storage@v0'
       with:
-        path: 'content/*'
+        path: 'content/'
         destination: 'lebergarrett.com'
