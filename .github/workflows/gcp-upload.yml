@@ -27,3 +27,4 @@ jobs:
       with:
         path: 'content/'
         destination: 'lebergarrett.com'
+        parent: false
