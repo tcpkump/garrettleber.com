@@ -1,4 +1,4 @@
-name: Upload Content
+name: AWS Upload Content
 
 on:
   push:

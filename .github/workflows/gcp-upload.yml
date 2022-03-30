@@ -1,4 +1,4 @@
-name: Upload Content
+name: GCP Upload Content
 
 on:
   push:
