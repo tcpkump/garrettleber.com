@@ -1,0 +1,207 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform_plan:
+    name: Plan Infrastructure
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    defaults:
+      run:
+        working-directory: ./infra
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+
+      - uses: actions/github-script@0.9.0
+        env:
+          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+            #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+            #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+            <details><summary>Show Plan</summary>
+            \`\`\`${process.env.PLAN}\`\`\`
+            </details>
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+  terraform_deploy:
+    name: Deploy Infrastructure
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    defaults:
+      run:
+        working-directory: ./infra
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+
+      - name: Store Terraform Outputs to File
+        run: terraform output -json > ./terraform_outputs.json
+
+      - name: Store Terraform Outputs as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform_outputs
+          path: infra/terraform_outputs.json
+
+  build-site:
+    name: Build Site
+    runs-on: ubuntu-22.04
+    needs:
+      - terraform_deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          lfs: true # Fetch images and other binary files
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+
+      - name: Get Terraform Outputs
+        uses: actions/download-artifact@v3
+        with:
+          name: terraform_outputs
+          path: site/
+
+      - name: Extract Terraform Outputs and Load into config
+        run: |
+          sed -i "s|BUCKET_PLACEHOLDER|$(cat ./terraform_outputs.json | jq -r '.website_bucket_name.value')|g" ./config.yaml
+          sed -i "s|BASE_URL_PLACEHOLDER|$(cat ./terraform_outputs.json | jq -r '.website_bucket_name.value')|g" ./config.yaml
+          sed -i "s|VISITOR_COUNTER_URL_PLACEHOLDER|$(cat ./terraform_outputs.json | jq -r '.api_gateway_url.value')|g" ./config.yaml
+          sed -i "s|CLOUDFRONT_DISTRIBUTION_ID_PLACEHOLDER|$(cat ./terraform_outputs.json | jq -r '.cloudfront_distribution_id.value')|g" ./config.yaml
+
+      - name: Cat out config lines
+        run: |
+          cat ./config.yaml | grep -E 'baseURL|visitorCounterURL|s3://|cloudFrontDistributionID'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Tar public folder
+        run: tar -zcvf public.tar.gz public
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: site
+          path: site/public.tar.gz
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: site-config
+          path: site/config.yaml
+
+  deploy-site:
+    name: Deploy Site
+    runs-on: ubuntu-22.04
+    needs:
+      - terraform_deploy
+      - build-site
+    defaults:
+      run:
+        working-directory: ./site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          lfs: true # Fetch images and other binary files
+
+      - name: Get site artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: site
+          path: site/
+
+      - name: Unzip public folder
+        run: tar -zxvf public.tar.gz
+
+      - name: Get config artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: site-config
+          path: site/
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+
+      - name: Deploy
+        run: hugo deploy --maxDeletes -1 --invalidateCDN
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
