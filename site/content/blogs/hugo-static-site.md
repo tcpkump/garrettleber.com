@@ -43,4 +43,4 @@ Really all we do here is set up our github actions to build the site and deploy 
 
 ## Conclusion
 
-I know I didn't go into much technical detail here, but I really don't think there is too much I would want to go into (yet, maybe). If you are interested, everything for this site is open source and available on [github](https://github.com/lebergarrett/lebergarrett.com-frontend). I hope you enjoyed this post, and I hope you enjoy my site!
+I know I didn't go into much technical detail here, but I really don't think there is too much I would want to go into (yet, maybe). If you are interested, everything for this site is open source and available on [github](https://github.com/garrettleber/garrettleber.com). I hope you enjoyed this post, and I hope you enjoy my site!
