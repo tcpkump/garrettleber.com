@@ -189,12 +189,12 @@ params:
         info:
           enable: false
         content: |
-          - Leading the migration of virtual machines to Google Cloud Platform (GCP).
-          - Established Infrastructure as Code using Terraform, and Configuration Management using Ansible/AWX for all migrated hosts.
-          - Building development, staging, and production environments in GCP.
-          - Introduced CI/CD Pipelines to Datawarehouse team, improving development cycles and establishing GitOps.
-          - Started code review process within Datawarehouse team, ensuring quality checks for production code.
-          - Enhanced monitoring and alerting for Datawarehouse team by implementing dynamic host and service inventory, improving visibility into production systems.
+          - Successfully led the end-to-end migration of over 60 Datawarehouse pipelines (ETLs) to Google Cloud Platform (GCP), ensuring minimal disruption to business operations and achieving improved scalability and performance. 
+          - Implemented Infrastructure as Code practices using Terraform, enabling efficient provisioning and management of infrastructure resources. Utilized Ansible for Configuration Management, ensuring consistent and reproducible configurations across all migrated hosts. 
+          - Spearheaded the implementation of CI/CD pipelines within the Data Warehouse team, streamlining the development cycle by enforcing linting and testing standards and enabling automated deployments. This resulted in increased productivity and reduced time-to-market for new features and enhancements. 
+          - Acted as a key ambassador to multiple teams, facilitating the seamless ingestion of logs via Fluent-Bit into Google BigQuery. Collaborated closely with stakeholders to understand requirements, design effective solutions, and ensure smooth data flow and analysis. 
+          - Developed and deployed a Python microservice to GCP Cloud Functions, leveraging serverless architecture to optimize resource utilization. 
+          - Introduced a robust code review process within the Datawarehouse team, ensuring rigorous quality checks for production code. This initiative significantly enhanced the reliability, maintainability, and overall quality of the data pipelines and data transformations. 
 
       - job: "DevOps Engineer"
         company: "Mitel"
@@ -203,14 +203,10 @@ params:
         info:
           enable: false
         content: |
-          - Demonstrate expertise in administering all aspects of GCP resources using Terraform, Ansible/Puppet, and Bitbucket Pipelines for CI/CD.
-          - Spearhead the migration of NGINX reverse proxies to GCP by repackaging to containers in a Kubernetes cluster (GKE).
-          - Extract container images from a private Artifactory repo and attach configuration using config maps, strictly built out in Terraform.
-          - Review, assess, and enhance logging and alerting using Puppet to maintain New Relic log forwarding and Terraform for creating alerts.
-          - Participate in on-call rotation to support fleet of hundreds of servers managed by team.
-          - Roll out fixes and upgrades to software, as needed, and secure software to prevent security breaches and other vulnerabilities.
-          - Suggest alterations to workflow in order to improve efficiency and success.
-
+          - Demonstrated expertise in administering and managing all aspects of Google Cloud Platform (GCP) resources using Terraform, Ansible/Puppet, and Bitbucket Pipelines for CI/CD. Effectively streamlined infrastructure provisioning, configuration, and deployment processes to ensure efficient and reliable operations. 
+          - Led the successful migration of NGINX reverse proxies to GCP by repackaging them into containers within a Kubernetes cluster (GKE). Oversaw the entire migration process, including containerization, deployment, and configuration management, resulting in improved scalability, availability, and performance of the infrastructure. 
+          - Reviewed, assessed, and enhanced logging and alerting mechanisms using Puppet, maintaining New Relic log forwarding. Leveraged Terraform to create comprehensive alerts, enabling timely response and proactive monitoring of the infrastructure. This effort significantly improved visibility into system health and facilitated effective incident management. 
+          - Actively participated in an on-call rotation to provide support for a fleet of hundreds of servers managed by the team. Responded to incidents promptly, performed troubleshooting and debugging, and implemented necessary remediation actions to ensure system stability and availability. 
 
       - job: "Network Security Engineer"
         company: "US Air Force - NetSec"
@@ -218,14 +214,13 @@ params:
         info:
           enable: false
         content: |
-          - Recruited and appointed to the Defensive Cyber Operations team at the enterprise level.
-          - Scripted Splunk queries for the purpose of detecting and mitigating malicious events while creating new network detection methods for utilization across the enterprise.
-          - Obtained and reviewed packet captures using Wireshark for packet/session analysis as well as tested and verified the legitimacy of traffic in question.
-          - Designed and delivered an innovative traffic burst detection technique for critical CVE exploits, ultimately eliminating security blind spots on the network.
-          - Documented processes to enable team’s continued success.
-          - Drove the adoption of a security-focused mindset among network teams.
-          - Attained ranking of top 15% of Airmen at this rank.
-          - Selected for an Early Promotion (BTZ) due to stellar performance.
+          - Recruited to the enterprise-level Defensive Cyber Operations team, demonstrating exceptional qualifications. 
+          - Scripted Splunk queries to detect and mitigate malicious events and created network detection methods for enterprise-wide use. 
+          - Reviewed packet captures with Wireshark for analysis and tested the legitimacy of network traffic. 
+          - Designed an innovative traffic burst detection technique for critical CVE exploits, eliminating network blind spots. 
+          - Drove the adoption of a security-focused mindset among network teams. 
+          - Attained ranking of top 15% of Airmen at this rank.  
+          - Selected for an Early Promotion (BTZ) due to stellar performance. 
 
       - job: "Network Engineer"
         company: "US Air Force - NetOps"
@@ -233,10 +228,10 @@ params:
         info:
           enable: false
         content: |
-          - Integrated, monitored, and supported Palo Alto Firewalls and Blue Coat Proxies at over 120 locations.
-          - Architected a firewall/proxy management portal utilized by teams across the globe with more than 100 operators.
-          - Coordinated and launched software upgrades for Palo Alto Firewalls acting as gateway for ~30 AF bases using Panorama.
-          - Investigated, analyzed, and resolved large-scale incidents and implemented remediation plans, including outages affecting 800,000 users.
+          - Managed and supported Palo Alto Firewalls and Blue Coat Proxies across 120+ locations, ensuring seamless integration and continuous monitoring. 
+          - Designed and developed a firewall/proxy management portal, enabling more than 100 operators globally to efficiently manage and control network security. 
+          - Orchestrated and executed software upgrades for Palo Alto Firewalls acting as gateways for approximately 30 Air Force bases in Panorama, ensuring smooth transitions and enhanced security. 
+          - Investigated, analyzed, and resolved large-scale incidents, implementing effective remediation plans to mitigate the impact of outages that affected 800,000 users.
 
       - job: "Web Advisor"
         company: "EIG - Verio"
@@ -244,10 +239,9 @@ params:
         info:
           enable: false
         content: |
-          - Utilized robust technical knowledge and understanding to provide superior helpdesk support for website hosting (CentOS Linux/cPanel).
-          - Attained expert status concerning migrations as well as assisted customers transferring data and setting up a shared hosting site/VPS.
-          - Conducted extensive DNS record management and SSL/TLS certificate configurations.
-          - Resolved issues with email clients, FTP, and SSH.
+          - Provided exceptional helpdesk support for website hosting (CentOS Linux/cPanel) by leveraging extensive technical knowledge and understanding. 
+          - Attained expert status in migrations, assisting customers with seamless data transfers and setup of shared hosting sites and VPS. 
+          - Conducted thorough management of DNS records and proficiently configured SSL/TLS certificates. 
 
   # Education
   education:
