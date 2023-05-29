@@ -4,7 +4,14 @@ date: 2023-05-24T18:30:43-04:00
 socialShare: false
 draft: false
 author: "Garrett Leber"
-tags: "hugo, github, static site, blog"
+tags:
+- "hugo"
+- "github"
+- "terraform"
+- "aws"
+- "blog"
+- "static site"
+- "github actions"
 image: /images/hugo.jpg
 description: "My experience building a static site with Hugo and github actions"
 ---
