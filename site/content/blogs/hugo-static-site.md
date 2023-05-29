@@ -1,5 +1,5 @@
 ---
-title: "Building a static site with Hugo and github actions"
+title: "Building a static site with Hugo and Github Actions"
 date: 2023-05-24T18:30:43-04:00
 socialShare: false
 draft: false
@@ -16,7 +16,7 @@ image: /images/hugo.jpg
 description: "My experience building a static site with Hugo and github actions"
 ---
 
-I've toyed with many ways of creating static websites over the years. I've done bare HTML/CSS with no frameworks, I've used bootstrap, I've used Jekyll, and I've used Hugo. One thing that has been consistent is my hosting via S3 and Cloudfront (among other pieces). However, this post will remain focused on what I consider the front end of the site, and not the hosting (we're saving that for another post). Out of all of the static sites I've developed, Hugo has been my favorite. It's fast, easy to use, and has a large community. For the theme, I chose [Hugo-Profile](https://github.com/gurusabarish/hugo-profile) because it allows me to have a clean homepage with a resume (both in HTML and PDF format) and a blog. I also like the fact that it's a single page application, so it's fast and easy to navigate.
+I've toyed with many ways of creating static websites over the years. I've done bare HTML/CSS with no frameworks, I've used bootstrap, I've used Jekyll, and I've used Hugo. One thing that has been consistent is my hosting via S3 and Cloudfront (among other pieces). Out of all of the static sites I've developed, Hugo has been my favorite. It's fast, easy to use, and has a large community. For the theme, I chose [Hugo-Profile](https://github.com/gurusabarish/hugo-profile) because it allows me to have a clean homepage with a resume (both in HTML and PDF format) and a blog. I also like the fact that it's a single page application, so it's fast and easy to navigate.
 
 ## My experience with Hugo
 
@@ -52,11 +52,11 @@ I started with a simple action to build and push my Hugo site to s3. This worked
 
 I moved my infrastructure code into the same repo as the frontend (eventually renaming it, now all code for my site is in one monorepo). This made it much easier to couple my Hugo builds with outputs from my infrastructure code (Terraform). There isn't native support in hugo for passing configuration parameters as environment variables or command line flags, so I had to get a bit creative here. My solution looks like this (all in github actions):
 
-- Terraform deploys the infrastructure and outputs the necessary values to a json file, which is then uploaded as an artifact
-- In my Hugo build step, I download the artifact and parse the json file to get the values I need
-- Said values are injected into my config.yaml file using `sed` (I know, I know, but it works)
-- Hugo builds the site, and stores the `public` directory as an artifact
-- In my Hugo deploy step, I download the artifact and upload it to s3
+1. Terraform deploys the infrastructure and outputs the necessary values to a json file, which is then uploaded as an artifact
+2. In my Hugo build step, I download the artifact and parse the json file to get the values I need
+3. Said values are injected into my config.yaml file using `sed` (I know, I know, but it works)
+4. Hugo builds the site, and stores the `public` directory as an artifact
+5. In my Hugo deploy step, I download the artifact and upload it to s3
 
 This has been working pretty well thusfar, and I think it lays some good groundwork for me to implement some testing in the future (both for my infrastructure and my frontend).
 
