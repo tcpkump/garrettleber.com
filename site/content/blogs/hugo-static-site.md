@@ -53,10 +53,10 @@ I started with a simple action to build and push my Hugo site to s3. This worked
 I moved my infrastructure code into the same repo as the frontend (eventually renaming it, now all code for my site is in one monorepo). This made it much easier to couple my Hugo builds with outputs from my infrastructure code (Terraform). There isn't native support in hugo for passing configuration parameters as environment variables or command line flags, so I had to get a bit creative here. My solution looks like this (all in github actions):
 
 1. Terraform deploys the infrastructure and outputs the necessary values to a json file, which is then uploaded as an artifact
-2. In my Hugo build step, I download the artifact and parse the json file to get the values I need
+2. In my Hugo build job, I download the artifact and parse the json file to get the values I need
 3. Said values are injected into my config.yaml file using `sed` (I know, I know, but it works)
 4. Hugo builds the site, and stores the `public` directory as an artifact
-5. In my Hugo deploy step, I download the artifact and upload it to s3
+5. In my Hugo deploy job, I download the artifact and upload it to s3
 
 This has been working pretty well thusfar, and I think it lays some good groundwork for me to implement some testing in the future (both for my infrastructure and my frontend).
 
