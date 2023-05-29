@@ -4,7 +4,7 @@ date: 2023-05-24T18:30:43-04:00
 socialShare: false
 draft: false
 author: "Garrett Leber"
-tags:
+tags: "hugo, github, static site, blog"
 image: /images/hugo.jpg
 description: "My experience building a static site with Hugo and github actions"
 ---
@@ -39,8 +39,22 @@ Then I got to typing this page up, how fun.
 
 ## Adding github actions
 
-Really all we do here is set up our github actions to build the site and deploy it to S3. I'll leave it as an exercise to the reader to figure out how to do this, but I'll give you a hint: If you are using a CDN like Cloudfront, you should also invalidate the cache on deploy.
+This took quite a bit of tweaking/iterations to get through, and I still see room for improvement.
+
+I started with a simple action to build and push my Hugo site to s3. This worked flawlessly. Adding CloudFront invalidation was also pretty easy. At this point I had a separated frontend and backend repo structure, and therefore I was hardcoding several values in my frontend to connect things (s3 Bucket, CloudFront Distribution ID, Visitor Counter API URL). This didn't feel right, and ended up with me down quite the rabbit hole.
+
+I moved my infrastructure code into the same repo as the frontend (eventually renaming it, now all code for my site is in one monorepo). This made it much easier to couple my Hugo builds with outputs from my infrastructure code (Terraform). There isn't native support in hugo for passing configuration parameters as environment variables or command line flags, so I had to get a bit creative here. My solution looks like this (all in github actions):
+
+- Terraform deploys the infrastructure and outputs the necessary values to a json file, which is then uploaded as an artifact
+- In my Hugo build step, I download the artifact and parse the json file to get the values I need
+- Said values are injected into my config.yaml file using `sed` (I know, I know, but it works)
+- Hugo builds the site, and stores the `public` directory as an artifact
+- In my Hugo deploy step, I download the artifact and upload it to s3
+
+This has been working pretty well thusfar, and I think it lays some good groundwork for me to implement some testing in the future (both for my infrastructure and my frontend).
 
 ## Conclusion
 
-I know I didn't go into much technical detail here, but I really don't think there is too much I would want to go into (yet, maybe). If you are interested, everything for this site is open source and available on [github](https://github.com/garrettleber/garrettleber.com). I hope you enjoyed this post, and I hope you enjoy my site!
+I'm pretty happy with how my site turned out. I think it's a good balance of simple and functional, while leaving room for me to add more features in the future.
+
+If you are interested, everything for this site is open source and available on [github](https://github.com/garrettleber/garrettleber.com). I hope you enjoyed this post, and I hope you enjoy my site!
