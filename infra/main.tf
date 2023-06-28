@@ -107,7 +107,7 @@ data "aws_route53_zone" "site_zones" {
 resource "aws_route53_record" "site_records" {
   for_each = toset(local.domains)
   zone_id  = data.aws_route53_zone.site_zones[each.key].zone_id
-  name     = each.key
+  names    = each.key
   type     = "A"
 
   alias {
@@ -120,7 +120,7 @@ resource "aws_route53_record" "site_records" {
 resource "aws_route53_record" "site_www_records" {
   for_each = toset(local.domains)
   zone_id  = data.aws_route53_zone.site_zones[each.key].zone_id
-  name     = "www.${each.key}"
+  names    = "www.${each.key}"
   type     = "A"
 
   alias {
