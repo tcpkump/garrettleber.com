@@ -1,7 +1,13 @@
 locals {
   primary_site_domain        = "garrettleber.com"
   primary_site_domain_dashed = replace(local.primary_site_domain, ".", "-")
-  additional_site_domains    = ["lebergarrett.com"]
+
+  additional_site_domains    = [
+    "lebergarrett.com",
+    "www.lebergarrett.com",
+    "www.garrettleber.com"
+  ]
+ 
   domains                    = concat([local.primary_site_domain], local.additional_site_domains)
 
   s3_origin_id = "S3-${local.primary_site_domain}"

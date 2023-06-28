@@ -107,20 +107,7 @@ data "aws_route53_zone" "site_zones" {
 resource "aws_route53_record" "site_records" {
   for_each = toset(local.domains)
   zone_id  = data.aws_route53_zone.site_zones[each.key].zone_id
-  names    = each.key
-  type     = "A"
-
-  alias {
-    name                   = aws_cloudfront_distribution.main.domain_name
-    zone_id                = aws_cloudfront_distribution.main.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "site_www_records" {
-  for_each = toset(local.domains)
-  zone_id  = data.aws_route53_zone.site_zones[each.key].zone_id
-  names    = "www.${each.key}"
+  name     = each.key
   type     = "A"
 
   alias {
