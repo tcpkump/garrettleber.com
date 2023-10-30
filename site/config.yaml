@@ -189,12 +189,12 @@ params:
         info:
           enable: false
         content: |
-          - Successfully led the end-to-end migration of over 60 Datawarehouse pipelines (ETLs) to Google Cloud Platform (GCP), ensuring minimal disruption to business operations and achieving improved scalability and performance. 
-          - Implemented Infrastructure as Code practices using Terraform, enabling efficient provisioning and management of infrastructure resources. Utilized Ansible for Configuration Management, ensuring consistent and reproducible configurations across all migrated hosts. 
+          - Successfully led the end-to-end migration of over 60 Datawarehouse pipelines (ETLs) to Google Cloud Platform (GCP, CloudSQL and BigQuery), ensuring minimal disruption to business operations and achieving improved scalability and performance. 
+          - Pioneered Infrastructure as Code practices using Terraform, enabling efficient provisioning and management of infrastructure resources. Utilized Ansible for Configuration Management, ensuring consistent and reproducible configurations across all migrated hosts. 
           - Spearheaded the implementation of CI/CD pipelines within the Data Warehouse team, streamlining the development cycle by enforcing linting and testing standards and enabling automated deployments. This resulted in increased productivity and reduced time-to-market for new features and enhancements. 
           - Acted as a key ambassador to multiple teams, facilitating the seamless ingestion of logs via Fluent-Bit into Google BigQuery. Collaborated closely with stakeholders to understand requirements, design effective solutions, and ensure smooth data flow and analysis. 
-          - Developed and deployed a Python microservice to GCP Cloud Functions, leveraging serverless architecture to optimize resource utilization. 
-          - Introduced a robust code review process within the Datawarehouse team, ensuring rigorous quality checks for production code. This initiative significantly enhanced the reliability, maintainability, and overall quality of the data pipelines and data transformations. 
+          - Designed, developed and deployed a Python microservice to GCP Cloud Functions, leveraging serverless architecture to optimize resource utilization. 
+          - Introduced a robust code review process within the Datawarehouse team, ensuring rigorous quality checks for production code. This initiative significantly enhanced the reliability, maintainability, and overall quality of the data pipelines, stored procedures, DDL, and infrastructure definitions. 
 
       - job: "DevOps Engineer"
         company: "Mitel"
