@@ -131,7 +131,7 @@ params:
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
-          url: https://github.com/garrettleber
+          url: https://github.com/tcpkump
 
   # About
   about:
@@ -270,7 +270,7 @@ params:
 
   footer:
     socialNetworks:
-      github: https://github.com/garrettleber
+      github: https://github.com/tcpkump
 
   # List pages like blogs and posts
   listPages:

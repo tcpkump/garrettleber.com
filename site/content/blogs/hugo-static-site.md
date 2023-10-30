@@ -64,4 +64,4 @@ This has been working pretty well thusfar, and I think it lays some good groundw
 
 I'm pretty happy with how my site turned out. I think it's a good balance of simple and functional, while leaving room for me to add more features in the future.
 
-If you are interested, everything for this site is open source and available on [github](https://github.com/garrettleber/garrettleber.com). I hope you enjoyed this post, and I hope you enjoy my site!
+If you are interested, everything for this site is open source and available on [github](https://github.com/tcpkump/garrettleber.com). I hope you enjoyed this post, and I hope you enjoy my site!
