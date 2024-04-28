@@ -1,5 +1,11 @@
 # garrettleber.com
 
+## DEPRECATION NOTICE
+
+This website is no longer live, and hence, this repo no longer active. I have chosen to start being a little more private about my life, but with the understanding that was has already been posted on the internet cannot be undone (partially why this repo is still public). Nonetheless, I hope that code/techniques presented in this repository are helpful to someone.
+
+## Description
+
 This repo holds the both the frontend and backend code for my personal website. The frontend is a static site generated using Hugo and the backend is using AWS Serverless technologies deployed via Terraform.
 
 ## Frontend
