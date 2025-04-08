@@ -123,11 +123,7 @@ params:
       enable: false
     roundImage: true # Make hero image circular | default false
     button:
-      enable: true
-      name: "Resume"
-      url: "files/GarrettLeber.pdf"
-      download: false
-      newPage: false
+      enable: false
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
@@ -139,7 +135,7 @@ params:
     title: "About Me"
     #image: "/images/hero-bg.jpg"
     content: |-
-      I consider myself a software engineer with a specialization in infrastructure, which tends to be a DevOps role. Most of my experience is with GCP, but I have also worked with AWS (and am a certified AWS Solutions Architect Associate). 
+      I consider myself a software engineer with a specialization in infrastructure, which tends to be a DevOps role. Most of my experience is with GCP, but I have also worked with AWS. 
       
       I have experience in broad areas of infrastructure, including:
 
@@ -149,7 +145,6 @@ params:
       - Monitoring
       - Logging
       - Databases
-      - Programming
 
       I also have experience in more specialized areas. I have several years of experience in networking, previously being CCNA certified. A couple of those years were in network security, specifically doing deep packet inpection and intrusion detection.
 
@@ -179,81 +174,11 @@ params:
 
   # Experience
   experience:
-    enable: true
-    # title: "Custom Name"
-    items:
-      - job: "DevOps Engineer"
-        company: "OpenVPN"
-        companyUrl: "https://openvpn.net/"
-        date: "Feb 2022 - present"
-        info:
-          enable: false
-        content: |
-          - Successfully led the end-to-end migration of over 60 Datawarehouse pipelines (ETLs) to Google Cloud Platform (GCP, CloudSQL and BigQuery), ensuring minimal disruption to business operations and achieving improved scalability and performance. 
-          - Pioneered Infrastructure as Code practices using Terraform, enabling efficient provisioning and management of infrastructure resources. Utilized Ansible for Configuration Management, ensuring consistent and reproducible configurations across all migrated hosts. 
-          - Spearheaded the implementation of CI/CD pipelines within the Data Warehouse team, streamlining the development cycle by enforcing linting and testing standards and enabling automated deployments. This resulted in increased productivity and reduced time-to-market for new features and enhancements. 
-          - Acted as a key ambassador to multiple teams, facilitating the seamless ingestion of logs via Fluent-Bit into Google BigQuery. Collaborated closely with stakeholders to understand requirements, design effective solutions, and ensure smooth data flow and analysis. 
-          - Designed, developed and deployed a Python microservice to GCP Cloud Functions, leveraging serverless architecture to optimize resource utilization. 
-          - Introduced a robust code review process within the Datawarehouse team, ensuring rigorous quality checks for production code. This initiative significantly enhanced the reliability, maintainability, and overall quality of the data pipelines, stored procedures, DDL, and infrastructure definitions. 
-
-      - job: "DevOps Engineer"
-        company: "Mitel"
-        companyUrl: "https://www.mitel.com/"
-        date: "May 2021 - Jan 2022"
-        info:
-          enable: false
-        content: |
-          - Demonstrated expertise in administering and managing all aspects of Google Cloud Platform (GCP) resources using Terraform, Ansible/Puppet, and Bitbucket Pipelines for CI/CD. Effectively streamlined infrastructure provisioning, configuration, and deployment processes to ensure efficient and reliable operations. 
-          - Led the successful migration of NGINX reverse proxies to GCP by repackaging them into containers within a Kubernetes cluster (GKE). Oversaw the entire migration process, including containerization, deployment, and configuration management, resulting in improved scalability, availability, and performance of the infrastructure. 
-          - Reviewed, assessed, and enhanced logging and alerting mechanisms using Puppet, maintaining New Relic log forwarding. Leveraged Terraform to create comprehensive alerts, enabling timely response and proactive monitoring of the infrastructure. This effort significantly improved visibility into system health and facilitated effective incident management. 
-          - Actively participated in an on-call rotation to provide support for a fleet of hundreds of servers managed by the team. Responded to incidents promptly, performed troubleshooting and debugging, and implemented necessary remediation actions to ensure system stability and availability. 
-
-      - job: "Network Security Engineer"
-        company: "US Air Force - NetSec"
-        date: "Nov 2019 - May 2021"
-        info:
-          enable: false
-        content: |
-          - Recruited to the enterprise-level Defensive Cyber Operations team, demonstrating exceptional qualifications. 
-          - Scripted Splunk queries to detect and mitigate malicious events and created network detection methods for enterprise-wide use. 
-          - Reviewed packet captures with Wireshark for analysis and tested the legitimacy of network traffic. 
-          - Designed an innovative traffic burst detection technique for critical CVE exploits, eliminating network blind spots. 
-          - Drove the adoption of a security-focused mindset among network teams. 
-          - Attained ranking of top 15% of Airmen at this rank.  
-          - Selected for an Early Promotion (BTZ) due to stellar performance. 
-
-      - job: "Network Engineer"
-        company: "US Air Force - NetOps"
-        date: "Nov 2017 - Nov 2019"
-        info:
-          enable: false
-        content: |
-          - Managed and supported Palo Alto Firewalls and Blue Coat Proxies across 120+ locations, ensuring seamless integration and continuous monitoring. 
-          - Designed and developed a firewall/proxy management portal, enabling more than 100 operators globally to efficiently manage and control network security. 
-          - Orchestrated and executed software upgrades for Palo Alto Firewalls acting as gateways for approximately 30 Air Force bases in Panorama, ensuring smooth transitions and enhanced security. 
-          - Investigated, analyzed, and resolved large-scale incidents, implementing effective remediation plans to mitigate the impact of outages that affected 800,000 users.
-
-      - job: "Web Advisor"
-        company: "EIG - Verio"
-        date: "Oct 2016 - Apr 2017"
-        info:
-          enable: false
-        content: |
-          - Provided exceptional helpdesk support for website hosting (CentOS Linux/cPanel) by leveraging extensive technical knowledge and understanding. 
-          - Attained expert status in migrations, assisting customers with seamless data transfers and setup of shared hosting sites and VPS. 
-          - Conducted thorough management of DNS records and proficiently configured SSL/TLS certificates. 
+    enable: false
 
   # Education
   education:
-    enable: true
-    # title: "Custom Name"
-    index: false
-    items:
-      - title: "Bachelor of Science in Information Technology - Network Operations and Security"
-        school:
-          name: "Western Governors University"
-          url: "https://www.wgu.edu/"
-        date: "2020"
+    enable: false
 
   #Contact
   contact:

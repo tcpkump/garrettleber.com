@@ -2,7 +2,7 @@
 title: "Ergonomic keyboards can be fun?"
 date: 2023-12-02T18:25:13-04:00
 socialShare: false
-draft: true
+draft: false
 author: "Garrett Leber"
 tags:
 - "github"
@@ -25,9 +25,9 @@ thoroughly enjoyed the ability to adapt my keymap to my needs.
 The keyboards I've bought/built so far are:
 
 - [Keebio Iris](https://keeb.io/collections/iris-split-ergonomic-keyboard)
-- [Corne]() (42 key, fully wireless)
-- [Lumberjack]() (my favorite for looks)
-- [Sofle v2 choc]() (my current daily driver, favorite for typing)
+- Corne (42 key, fully wireless)
+- Lumberjack (my favorite for looks)
+- Sofle v2 choc (my current daily driver, favorite for typing)
 
 I'd like to just capture some of my thoughts on each of these keyboards and what led me to
 each of them.
