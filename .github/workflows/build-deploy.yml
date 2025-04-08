@@ -131,7 +131,7 @@ jobs:
           hugo-version: "latest"
 
       - name: Get Terraform Outputs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: terraform_outputs
           path: site/
@@ -181,7 +181,7 @@ jobs:
           lfs: true # Fetch images and other binary files
 
       - name: Get site artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: site
           path: site/
@@ -190,7 +190,7 @@ jobs:
         run: tar -zxvf public.tar.gz
 
       - name: Get config artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: site-config
           path: site/
