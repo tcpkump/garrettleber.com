@@ -39,19 +39,28 @@ With these minor grievances in mind, and a newish 3d printer that I bought last 
 
 I generated the STLs from the build script in the original repo https://github.com/mjohns/dactyl-cc and fed them into octoprint. I chose to go with a simple 0.2mm layer height, 20% infill, and default tree supports. The print came out clean — supports were easy to remove, and the case was sturdy enough for switch installation.
 
--- picture here
+![dactyl print](/images/dactyl_print.jpg)
 
 ## Starting assembly
 
 So the first step was to simply insert my switches ( [Akko Draculas](https://en.akkogear.com/product/akko-dracula-switch/) ) into the cases, this went without a hitch.
 
+![dactyl switches](/images/dactyl_switches.jpg)
+
 Next, I wired the matrix. I used copper tape to run most of my columns, with some solder at each joint with the switch to ensure good connections. In places where columns needed sharp turns or odd routes, like connecting to the thumb keys, I initially ran copper tape, but on the second half I found it much easier to simply cut some pieces of wire and solder those.
+
+![dactyl copper tape](/images/dactyl_coppertape.jpg)
 
 After the copper tape is in place, I _then_ hotglued my switches to the case. The reason for doing this after the copper tape is because the hot glue would create a very irregular, bumpy surface for the tape to run across, increasing the chance of loose connections. By doing it after, it also aids in holding the tape in place and helps insulate it from other wires in the assembly.
 
 Next, I ran my diodes for the rows, this went rather well without much issue. Orientation is very important, and somehow I managed to get all the diodes right on the first try.
 
+![dactyl diodes](/images/dactyl_diodes.jpg)
+
 After this, I simply added some [female-terminated dupont connectors](https://en.akkogear.com/product/akko-dracula-switch/) to the end of each column and row, which I could easily connect and disconnect from my microcontroller to test and develop the software configuration before soldering anything.
+
+![dactyl dupont1](/images/dactyl_dupont1.jpg)
+![dactyl dupont2](/images/dactyl_dupont2.jpg)
 
 Now, I think it's very important to mention that I did not do much research about the "correct" matrix for this keyboard, so my wiring was simply what makes the most sense to me at the time. This is very important later, because it resulted in me having to do much more work on the software side to define my own matrix and entire keyboard in QMK.
 
