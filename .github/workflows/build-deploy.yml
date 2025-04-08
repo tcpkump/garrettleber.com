@@ -103,7 +103,7 @@ jobs:
         run: terraform output -json > ./terraform_outputs.json
 
       - name: Store Terraform Outputs as Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: terraform_outputs
           path: infra/terraform_outputs.json
@@ -153,12 +153,12 @@ jobs:
       - name: Tar public folder
         run: tar -zcvf public.tar.gz public
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: site
           path: site/public.tar.gz
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: site-config
           path: site/config.yaml
