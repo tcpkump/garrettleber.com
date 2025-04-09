@@ -44,8 +44,10 @@ repo.
 
 The necessary command to do this is:
 
-```bash git submodule add https://github.com/gurusabarish/hugo-profile.git
-themes/hugo-profile ```
+```bash
+git submodule add https://github.com/gurusabarish/hugo-profile.git
+themes/hugo-profile
+```
 
 Once you have the theme, I think it is normal to dive into loading your content
 onto the landing page, which is what I started doing. I did this a bit
@@ -69,7 +71,9 @@ add a new page.
 
 The necessary command to do this is:
 
-```bash hugo new blogs/hugo-static-site.md ```
+```bash
+hugo new blogs/hugo-static-site.md
+```
 
 Then I got to typing this page up, how fun.
 

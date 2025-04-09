@@ -9,7 +9,7 @@ tags:
 - "github actions"
 - "keyboards"
 - "development"
-#image: /images/hugo.jpg
+image: /images/lumberjack.jpg
 description: "My ergonomic keyboard experience and why I think you should try one"
 ---
 
