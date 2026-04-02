@@ -15,7 +15,7 @@ freezer = Freezer(app)
 @freezer.register_generator
 def blog_post():
     for post in load_blog_posts():
-        yield {"slug": post.slug}
+        yield "main.blog_post", {"slug": post.slug}
 
 
 if __name__ == "__main__":
