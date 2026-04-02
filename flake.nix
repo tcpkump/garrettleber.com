@@ -22,7 +22,10 @@
             pkgs.terraform-docs
             pkgs.trivy
             pkgs.gitleaks
-            pkgs.hugo
+            pkgs.pnpm
+            pkgs.nodejs_22
+            pkgs.python312
+            pkgs.python312Packages.virtualenv
           ];
 
           # Define the versions we want to use
@@ -50,6 +53,15 @@
               tenv tf use $TERRAFORM_VERSION
               echo "Environment ready with Terraform $TERRAFORM_VERSION"
             fi
+
+            # Python venv for site
+            if [ ! -d "site/.venv" ]; then
+              echo "Creating Python venv in site/.venv..."
+              python -m venv site/.venv
+            fi
+            source site/.venv/bin/activate
+            pip install -q -e site/
+            echo "Python venv activated (site/.venv)"
           '';
         };
       }

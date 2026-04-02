@@ -1,0 +1,377 @@
+/* Kanagawa Wave theme for WebTUI */
+
+:root {
+    --background: #1F1F28;
+    --foreground: #DCD7BA;
+    --muted: #727169;
+    --border: #363646;
+    --primary: #7E9CD8;
+    --accent: #7E9CD8;
+    --secondary: #957FB8;
+    --link: #7FB4CA;
+    --success: #98BB6C;
+    --warning: #E6C384;
+    --error: #FF5D62;
+
+    /* Surface colors */
+    --surface-0: #1F1F28;
+    --surface-1: #2A2A37;
+    --surface-2: #363646;
+
+    /* Extra palette for badges/tags */
+    --sakura-pink: #D27E99;
+    --surimi-orange: #FFA066;
+    --wave-aqua: #7AA89F;
+    --spring-green: #98BB6C;
+    --crystal-blue: #7E9CD8;
+    --oni-violet: #957FB8;
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "IBM Plex Mono", "Fira Code", "JetBrains Mono", "Cascadia Code", monospace;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary);
+}
+
+/* Navigation */
+.nav {
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--surface-1);
+}
+
+.nav-brand {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.nav-brand:hover {
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--foreground);
+}
+
+/* Layout */
+.container {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Hero */
+.hero {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.hero-intro {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.hero-title {
+    color: var(--foreground);
+    font-size: 2rem;
+    margin: 0.25rem 0;
+}
+
+.hero-subtitle {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content {
+    color: var(--muted);
+    max-width: 40rem;
+}
+
+/* Badges / Tags */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin: 0.15rem;
+    color: var(--foreground);
+    background-color: var(--surface-2);
+}
+
+.badge:nth-child(6n+1) { color: var(--crystal-blue); border-color: var(--crystal-blue); }
+.badge:nth-child(6n+2) { color: var(--spring-green); border-color: var(--spring-green); }
+.badge:nth-child(6n+3) { color: var(--sakura-pink); border-color: var(--sakura-pink); }
+.badge:nth-child(6n+4) { color: var(--surimi-orange); border-color: var(--surimi-orange); }
+.badge:nth-child(6n+5) { color: var(--oni-violet); border-color: var(--oni-violet); }
+.badge:nth-child(6n+6) { color: var(--wave-aqua); border-color: var(--wave-aqua); }
+
+/* Skills grid */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+/* Blog post cards */
+.post-card {
+    border: 1px solid var(--border);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--surface-1);
+    display: flex;
+    gap: 1rem;
+    transition: border-color 0.2s;
+}
+
+.post-card:hover {
+    border-color: var(--primary);
+}
+
+.post-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-card-image {
+    width: 160px;
+    min-width: 160px;
+    height: 110px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.post-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-card-title {
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.post-card-date {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+}
+
+.post-card-desc {
+    color: var(--foreground);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Blog post page */
+.post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-title {
+    color: var(--foreground);
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.post-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.post-featured-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+/* Markdown content */
+.post-content h2 {
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.35rem;
+    margin-top: 2rem;
+}
+
+.post-content h3 {
+    color: var(--secondary);
+    margin-top: 1.5rem;
+}
+
+.post-content p {
+    margin: 0.75rem 0;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    margin: 1rem 0;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 1.5rem;
+}
+
+.post-content li {
+    margin: 0.25rem 0;
+}
+
+.post-content code {
+    background-color: var(--surface-2);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    font-size: 0.9em;
+}
+
+.post-content pre {
+    background-color: var(--surface-1);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--secondary);
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    color: var(--muted);
+}
+
+.post-content a {
+    color: var(--link);
+}
+
+.post-content a:hover {
+    color: var(--primary);
+}
+
+/* Pygments / codehilite overrides for Kanagawa */
+.highlight {
+    background-color: var(--surface-1) !important;
+    border: 1px solid var(--border);
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.highlight pre {
+    background: none !important;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* TOC permalink */
+.post-content .headerlink {
+    color: var(--muted);
+    font-size: 0.8em;
+    margin-left: 0.3rem;
+    text-decoration: none;
+}
+
+.post-content .headerlink:hover {
+    color: var(--primary);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
+
+.footer a {
+    color: var(--link);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .post-card {
+        flex-direction: column;
+    }
+
+    .post-card-image {
+        width: 100%;
+        min-width: unset;
+        height: 160px;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+}

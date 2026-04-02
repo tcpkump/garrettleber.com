@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Garrett Leber{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kanagawa.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-brand" href="{{ url_for('main.home') }}">~/garrett-leber</a>
+        <div class="nav-links">
+            <a href="{{ url_for('main.home') }}"{% if request.path == '/' %} class="active"{% endif %}>Home</a>
+            <a href="{{ url_for('main.blog_list') }}"{% if request.path.startswith('/blog') %} class="active"{% endif %}>Blog</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <a href="https://github.com/tcpkump">github.com/tcpkump</a>
+    </footer>
+</body>
+</html>
