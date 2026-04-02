@@ -1,12 +1,17 @@
 """Freeze the Flask app into a static site under build/."""
 
-from flask_frozen import Freezer
+import os
+import warnings
+
+from flask_frozen import Freezer, MimetypeMismatchWarning
+
+warnings.filterwarnings("ignore", category=MimetypeMismatchWarning)
 
 from app import create_app
 from app.content import load_blog_posts
 
 app = create_app()
-app.config["FREEZER_DESTINATION"] = "build"
+app.config["FREEZER_DESTINATION"] = os.path.join(os.path.dirname(__file__), "build")
 app.config["FREEZER_RELATIVE_URLS"] = True
 
 freezer = Freezer(app)

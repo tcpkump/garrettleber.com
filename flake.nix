@@ -25,7 +25,7 @@
             pkgs.pnpm
             pkgs.nodejs_22
             pkgs.python312
-            pkgs.python312Packages.virtualenv
+            pkgs.uv
           ];
 
           # Define the versions we want to use
@@ -54,13 +54,8 @@
               echo "Environment ready with Terraform $TERRAFORM_VERSION"
             fi
 
-            # Python venv for site
-            if [ ! -d "site/.venv" ]; then
-              echo "Creating Python venv in site/.venv..."
-              python -m venv site/.venv
-            fi
+            uv sync --project site/ --quiet
             source site/.venv/bin/activate
-            pip install -q -e site/
             echo "Python venv activated (site/.venv)"
           '';
         };

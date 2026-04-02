@@ -24,16 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v17
 
-      - name: Install dependencies
-        run: pip install -e site/
+      - name: Cache Nix store
+        uses: DeterminateSystems/magic-nix-cache-action@v9
 
       - name: Build static site
-        run: python site/freeze.py
+        run: nix develop --command bash scripts/build-site.sh
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

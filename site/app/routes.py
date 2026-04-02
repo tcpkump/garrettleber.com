@@ -19,7 +19,7 @@ def home():
     return render_template("home.html")
 
 
-@bp.route("/blog")
+@bp.route("/blog/")
 def blog_list():
     posts = load_blog_posts()
     return render_template("blog_list.html", posts=posts)
