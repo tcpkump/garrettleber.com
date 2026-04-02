@@ -28,10 +28,10 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v17
 
       - name: Cache Nix store
-        uses: DeterminateSystems/magic-nix-cache-action@v9
+        uses: DeterminateSystems/flakehub-cache-action@v9
 
       - name: Build static site
-        run: nix develop --command bash scripts/build-site.sh
+        run: nix develop .#site --command bash scripts/build-site.sh
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

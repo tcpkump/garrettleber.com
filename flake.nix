@@ -1,5 +1,5 @@
 {
-  description = "Terraform Infrastructure development environment";
+  description = "garrettleber.com development environment";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.systems.url = "github:nix-systems/default";
   inputs.flake-utils = {
@@ -15,45 +15,21 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShells.default = pkgs.mkShell {
+        devShells.site = pkgs.mkShell {
           packages = [
-            pkgs.tenv
-            pkgs.pre-commit
-            pkgs.terraform-docs
-            pkgs.trivy
-            pkgs.gitleaks
-            pkgs.pnpm
-            pkgs.nodejs_22
             pkgs.python312
             pkgs.uv
           ];
+        };
 
-          # Define the versions we want to use
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.python312
+            pkgs.uv
+            pkgs.pre-commit
+          ];
+
           shellHook = ''
-            TERRAFORM_VERSION="1.11.4"
-
-            echo "Checking for required tool versions..."
-
-            # Check if Terraform is installed at the correct version
-            if ! tenv tf list | grep -q "$TERRAFORM_VERSION"; then
-              echo "OpenTofu $TERRAFORM_VERSION is not installed."
-              echo "Run: tenv tf install $TERRAFORM_VERSION"
-              INSTALL_NEEDED=1
-            fi
-
-            # If installations are needed, exit with instructions
-            if [ -n "$INSTALL_NEEDED" ]; then
-              echo ""
-              echo "After installing the required versions, activate them with:"
-              echo "tenv tf use $TERRAFORM_VERSION"
-              echo ""
-              echo "Or run this shell again to verify."
-            else
-              # Set the versions to use
-              tenv tf use $TERRAFORM_VERSION
-              echo "Environment ready with Terraform $TERRAFORM_VERSION"
-            fi
-
             uv sync --project site/ --quiet
             source site/.venv/bin/activate
             echo "Python venv activated (site/.venv)"
