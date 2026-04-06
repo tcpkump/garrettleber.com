@@ -1,8 +1,6 @@
 """Routes: /, /blog, /blog/<slug>."""
 
-import re
-
-from flask import Blueprint, abort, render_template, url_for
+from flask import Blueprint, abort, render_template
 from markdown import markdown
 
 from app.content import load_blog_posts, load_post_by_slug
@@ -36,10 +34,5 @@ def blog_post(slug: str):
         post.body,
         extensions=MD_EXTENSIONS,
         extension_configs=MD_EXT_CONFIGS,
-    )
-    html_body = re.sub(
-        r'src="/images/([^"]+)"',
-        lambda m: f'src="{url_for("static", filename="images/" + m.group(1))}"',
-        html_body,
     )
     return render_template("blog_post.html", post=post, content=html_body)
