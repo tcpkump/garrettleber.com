@@ -25,7 +25,7 @@ def blog_list():
     return render_template("blog_list.html", posts=posts)
 
 
-@bp.route("/blog/<slug>")
+@bp.route("/blog/<slug>/")
 def blog_post(slug: str):
     post = load_post_by_slug(slug)
     if post is None:
