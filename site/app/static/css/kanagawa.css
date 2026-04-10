@@ -345,6 +345,103 @@ a:hover {
     color: var(--primary);
 }
 
+/* Blinking cursor after hero title */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hero-title::after {
+    content: "_";
+    color: var(--primary);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+/* CRT scanline overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.07) 3px,
+        rgba(0, 0, 0, 0.07) 6px
+    );
+}
+
+/* ## prefix on section/post headings */
+.section-title::before,
+.post-content h2::before {
+    content: "## ";
+    color: var(--muted);
+}
+
+.post-content h3::before {
+    content: "### ";
+    color: var(--muted);
+}
+
+/* > bullets on lists */
+.section ul li::marker,
+.post-content ul li::marker {
+    content: "> ";
+    color: var(--muted);
+}
+
+/* Blog post cat command header */
+.post-cmd {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ls -la blog listing */
+.ls-header {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.ls-total {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.ls-entry {
+    display: grid;
+    grid-template-columns: 10ch 8ch 12ch 22ch 1fr;
+    gap: 0.75rem;
+    padding: 0.15rem 0;
+    color: var(--foreground);
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.ls-entry:hover {
+    text-decoration: none;
+}
+
+.ls-entry:hover .ls-name {
+    color: var(--foreground);
+    text-decoration: underline;
+}
+
+.ls-perms { color: var(--muted); }
+.ls-owner { color: var(--success); }
+.ls-date  { color: var(--warning); }
+.ls-name  { color: var(--primary); }
+.ls-title { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* Footer */
 .footer {
     border-top: 1px solid var(--border);
@@ -374,4 +471,13 @@ a:hover {
     .hero-title {
         font-size: 1.5rem;
     }
+
+    .ls-entry {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .ls-perms, .ls-owner { display: none; }
 }

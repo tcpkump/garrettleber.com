@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-brand" href="{{ url_for('main.home') }}">~/garrett-leber</a>
+        <a class="nav-brand" href="{{ url_for('main.home') }}">garrett@garrettleber:~$</a>
         <div class="nav-links">
             <a href="{{ url_for('main.home') }}"{% if request.path == '/' %} class="active"{% endif %}>Home</a>
             <a href="{{ url_for('main.blog_list') }}"{% if request.path.startswith('/blog') %} class="active"{% endif %}>Blog</a>
@@ -20,8 +20,9 @@
         {% block content %}{% endblock %}
     </main>
 
+    {% block scripts %}{% endblock %}
     <footer class="footer">
-        <a href="https://github.com/tcpkump">github.com/tcpkump</a>
+        -- EOF -- &nbsp;&middot;&nbsp; <a href="https://github.com/tcpkump">github.com/tcpkump</a>
     </footer>
 </body>
 </html>

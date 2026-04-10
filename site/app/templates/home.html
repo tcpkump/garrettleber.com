@@ -4,7 +4,7 @@
 <div class="hero">
     <div class="hero-intro">Hi, my name is</div>
     <h1 class="hero-title">Garrett Leber</h1>
-    <div class="hero-subtitle">I like to automate things</div>
+    <div class="hero-subtitle" id="hero-subtitle"></div>
     <p class="hero-content">
         I'm a passionate Software Engineer with a specialization in cloud infrastructure. I enjoy finding solutions to
         problems and making sure they are repeatable (from scratch). I've worked with infrastructure on massive scales
@@ -66,4 +66,19 @@
         You can reach me at <a href="mailto:garrett@garrettleber.com">garrett@garrettleber.com</a>
     </p>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+    var el = document.getElementById('hero-subtitle');
+    var text = 'I like to automate things';
+    var i = 0;
+    var interval = setInterval(function() {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(interval);
+    }, 55);
+})();
+</script>
 {% endblock %}
