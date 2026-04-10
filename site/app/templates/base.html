@@ -28,11 +28,20 @@
         <main class="container">
             {% block content %}{% endblock %}
         </main>
+        <div class="tmux-bar">
+            <span class="tmux-session">garrett</span>
+            <span class="tmux-sep"> </span>
+            <span class="tmux-win">1:nvim</span>
+            <span class="tmux-win tmux-win-active">2:garrettleber.com*</span>
+            <span class="tmux-win">3:k9s</span>
+            <span class="tmux-win">4:terraform</span>
+            <span class="tmux-win">5:zsh-</span>
+        </div>
     </div>
 
     {% block scripts %}{% endblock %}
     <footer class="footer">
-        -- EOF -- &nbsp;&middot;&nbsp; <a href="https://github.com/tcpkump">github.com/tcpkump</a>
+        <a href="https://github.com/tcpkump">github.com/tcpkump</a>
     </footer>
 </body>
 </html>
