@@ -2,6 +2,8 @@
 
 {% block title %}{{ post.title }} - Garrett Leber{% endblock %}
 
+{% block terminal_path %}~/posts/{{ post.slug }}{% endblock %}
+
 {% block content %}
 <article>
     <div class="post-cmd">$ cat {{ post.slug }}.md</div>

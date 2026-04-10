@@ -96,8 +96,6 @@ a:hover {
 
 /* Layout */
 .container {
-    max-width: 52rem;
-    margin: 0 auto;
     padding: 2rem 1.5rem;
 }
 
@@ -442,6 +440,47 @@ body::after {
 .ls-name  { color: var(--primary); }
 .ls-title { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* Terminal window chrome */
+.terminal-window {
+    max-width: 56rem;
+    margin: 2rem auto;
+    border: 1px solid var(--border);
+    background-color: var(--surface-0);
+}
+
+.terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.45rem 1rem;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-dot-red    { background-color: #FF5D62; }
+.terminal-dot-yellow { background-color: #E6C384; }
+.terminal-dot-green  { background-color: #98BB6C; }
+
+.terminal-path {
+    color: var(--muted);
+    font-size: 0.8rem;
+    flex: 1;
+    text-align: center;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid var(--border);
@@ -458,6 +497,10 @@ body::after {
 
 /* Responsive */
 @media (max-width: 640px) {
+    .terminal-window {
+        margin: 0.75rem;
+    }
+
     .post-card {
         flex-direction: column;
     }

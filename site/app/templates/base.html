@@ -9,16 +9,26 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-brand" href="{{ url_for('main.home') }}">garrett@garrettleber:~$</a>
+        <a class="nav-brand" href="{{ url_for('main.home') }}">garrettleber.com</a>
         <div class="nav-links">
-            <a href="{{ url_for('main.home') }}"{% if request.path == '/' %} class="active"{% endif %}>Home</a>
-            <a href="{{ url_for('main.blog_list') }}"{% if request.path.startswith('/blog') %} class="active"{% endif %}>Blog</a>
+            <a href="{{ url_for('main.home') }}"{% if request.path == '/' %} class="active"{% endif %}>~/</a>
+            <a href="{{ url_for('main.blog_list') }}"{% if request.path.startswith('/blog') %} class="active"{% endif %}>~/blog</a>
         </div>
     </nav>
 
-    <main class="container">
-        {% block content %}{% endblock %}
-    </main>
+    <div class="terminal-window">
+        <div class="terminal-titlebar">
+            <div class="terminal-dots">
+                <span class="terminal-dot terminal-dot-red"></span>
+                <span class="terminal-dot terminal-dot-yellow"></span>
+                <span class="terminal-dot terminal-dot-green"></span>
+            </div>
+            <span class="terminal-path">garrett@garrettleber:{% block terminal_path %}~{% endblock %}</span>
+        </div>
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
 
     {% block scripts %}{% endblock %}
     <footer class="footer">
