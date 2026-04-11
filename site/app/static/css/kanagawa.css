@@ -176,10 +176,6 @@ a:hover {
 .apt-installed { color: var(--success); }
 
 .src-list { margin-top: 1rem; }
-.src-perms { color: var(--muted); }
-.src-meta  { color: var(--muted); }
-.src-size  { color: var(--muted); }
-.src-date  { color: var(--muted); }
 .src-name  { color: var(--primary); }
 
 /* Blog post cards */
