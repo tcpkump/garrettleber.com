@@ -2,12 +2,12 @@
 
 {% block title %}Blog - Garrett Leber{% endblock %}
 
-{% block terminal_path %}~/posts{% endblock %}
+{% block terminal_path %}~/blog{% endblock %}
 
 {% block content %}
 <h1 class="section-title">Blog</h1>
 
-<div class="ls-header">$ ls -la ~/posts/</div>
+<div class="ls-header">$ ls -la ~/blog/</div>
 <div class="ls-total">total {{ posts|length }}</div>
 
 {% for post in posts %}

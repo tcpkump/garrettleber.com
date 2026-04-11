@@ -1,4 +1,4 @@
-/* Kanagawa Wave theme for WebTUI */
+/* Kanagawa Wave theme */
 
 :root {
     --background: #1F1F28;
@@ -114,9 +114,9 @@ a:hover {
 
 /* Hero */
 .hero {
-    padding: 1rem 0 3rem;
+    padding: 1rem 0 1rem;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .hero-intro {
@@ -134,7 +134,6 @@ a:hover {
 .hero-subtitle {
     color: var(--primary);
     font-size: 1.1rem;
-    margin-bottom: 1rem;
 }
 
 .hero-content {
@@ -175,6 +174,13 @@ a:hover {
 .apt-listing { color: var(--muted); }
 .apt-name { color: var(--primary); }
 .apt-installed { color: var(--success); }
+
+.src-list { margin-top: 1rem; }
+.src-perms { color: var(--muted); }
+.src-meta  { color: var(--muted); }
+.src-size  { color: var(--muted); }
+.src-date  { color: var(--muted); }
+.src-name  { color: var(--primary); }
 
 /* Blog post cards */
 .post-card {
@@ -351,17 +357,19 @@ a:hover {
     color: var(--primary);
 }
 
-/* Blinking cursor after hero title */
+/* Blinking cursor */
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
 
-.hero-title::after {
-    content: "_";
-    color: var(--primary);
+.typing-cursor {
+    color: var(--foreground);
     animation: blink 1s step-end infinite;
-    margin-left: 2px;
+}
+
+.typing-error {
+    color: var(--error);
 }
 
 /* > bullets on lists */
@@ -422,6 +430,7 @@ a:hover {
     max-width: 56rem;
     margin: 2rem auto;
     border: 1px solid var(--border);
+    border-radius: 10px;
     background-color: var(--surface-0);
     overflow: hidden;
 }
@@ -482,10 +491,23 @@ a:hover {
 
 .tmux-win {
     color: var(--foreground);
+    text-decoration: none;
+    cursor: default;
 }
+
+.tmux-win:hover {
+    color: var(--foreground);
+    text-decoration: none;
+}
+
 
 .tmux-win-active {
     color: #E6C384;
+}
+
+.tmux-win-active:hover {
+    color: #E6C384;
+    text-decoration: none;
 }
 
 /* Footer */

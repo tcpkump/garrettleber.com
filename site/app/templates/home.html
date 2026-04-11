@@ -5,20 +5,17 @@
     <div class="hero-intro">Hi, my name is</div>
     <h1 class="hero-title">Garrett Leber</h1>
     <div class="hero-subtitle" id="hero-subtitle"></div>
-    <p class="hero-content">
-        I'm a passionate Software Engineer with a specialization in cloud infrastructure. I enjoy finding solutions to
-        problems and making sure they are repeatable (from scratch). I've worked with infrastructure on massive scales
-        (800,000 users on an internal network), as well as in smaller, more startup-style environments (40 employees).
-    </p>
 </div>
 
 <div class="section">
     <h2 class="section-title">About Me</h2>
     <p>
-        I consider myself a software engineer with a specialization in infrastructure, which tends to be a DevOps role.
-        Most of my experience is with GCP by a thin margin, but I also have extensive experience with AWS.
+        I enjoy finding solutions to problems and making sure they are repeatable (from scratch). I've worked with
+        infrastructure on massive scales (800,000 users on an internal network), as well as in smaller, more
+        startup-style environments (40 employees). Most of my experience is with GCP by a thin margin, but I also have
+        extensive experience with AWS.
     </p>
-    <p>I have experience in broad areas of infrastructure, including:</p>
+    <p>I have over 5 years of experience in:</p>
     <ul>
         <li>Workload Orchestration</li>
         <li>Infrastructure as Code</li>
@@ -29,10 +26,9 @@
         <li>Operational-level Database Administration (backups, user management, upgrades, etc.)</li>
     </ul>
     <p>
-        I also have experience in more specialized areas. I have several years of experience in networking, previously
-        being CCNA certified. A couple of those years were in network security, specifically doing deep packet
-        inspection and intrusion detection, an area where I held well-respected GIAC certs from the SANS institute (GCIA
-        and GMON).
+        I also have 4 years of specialized experience in networking, previously being CCNA certified. A couple of
+        those years were in network security, specifically doing deep packet inspection and intrusion detection, an area
+        where I held well-respected GIAC certs from the SANS institute (GCIA and GMON).
     </p>
 </div>
 
@@ -54,9 +50,12 @@
 <span class="apt-name">postgresql</span> <span class="apt-installed">[installed]</span>
 <span class="apt-name">mongodb</span> <span class="apt-installed">[installed]</span>
 <span class="apt-name">bigquery</span> <span class="apt-installed">[installed]</span>
-<span class="apt-name">python</span> <span class="apt-installed">[installed]</span>
-<span class="apt-name">go</span> <span class="apt-installed">[installed]</span>
-<span class="apt-name">bash</span> <span class="apt-installed">[installed]</span></pre>
+</pre>
+    <pre class="apt-list src-list"><span class="apt-cmd">$ ls -la ./src/</span>
+<span class="apt-listing">total 24</span>
+<span class="src-perms">drwxr-xr-x</span> <span class="src-meta">2 garrett garrett</span> <span class="src-size"> 4096</span> <span class="src-date">Jun 22  2014</span> <span class="src-name">bash</span>
+<span class="src-perms">drwxr-xr-x</span> <span class="src-meta">2 garrett garrett</span> <span class="src-size"> 4096</span> <span class="src-date">Nov  3  2017</span> <span class="src-name">python</span>
+<span class="src-perms">drwxr-xr-x</span> <span class="src-meta">2 garrett garrett</span> <span class="src-size"> 4096</span> <span class="src-date">Jan  8  2019</span> <span class="src-name">go</span></pre>
 </div>
 
 <div class="section">
@@ -71,13 +70,71 @@
 <script>
 (function() {
     var el = document.getElementById('hero-subtitle');
-    var text = 'I like to automate things';
-    var i = 0;
-    var interval = setInterval(function() {
-        el.textContent += text[i];
-        i++;
-        if (i >= text.length) clearInterval(interval);
-    }, 55);
+    el.appendChild(document.createTextNode('$ '));
+    var textNode = document.createTextNode('');
+    var cursorEl = document.createElement('span');
+    cursorEl.className = 'typing-cursor';
+    cursorEl.textContent = '|';
+    el.appendChild(textNode);
+    el.appendChild(cursorEl);
+
+    var buf = '';
+
+    function type(str, delay, done) {
+        var i = 0;
+        (function next() {
+            if (i < str.length) {
+                buf += str[i++];
+                textNode.nodeValue = buf;
+                setTimeout(next, delay);
+            } else if (done) {
+                done();
+            }
+        })();
+    }
+
+    function del(n, delay, done) {
+        var i = 0;
+        (function next() {
+            if (i < n) {
+                buf = buf.slice(0, -1);
+                textNode.nodeValue = buf;
+                i++;
+                setTimeout(next, delay);
+            } else if (done) {
+                done();
+            }
+        })();
+    }
+
+    setTimeout(function() {
+        type("I'm a disgruntled", 55, function() {
+            setTimeout(function() {
+                del('disgruntled'.length, 40, function() {
+                    setTimeout(function() {
+                        type('passionate Software Engineer with a specialization in cloud infrastructure.', 55, function() {
+                            setTimeout(function() {
+                                cursorEl.remove();
+                                el.appendChild(document.createElement('br'));
+                                var errLine = document.createElement('span');
+                                errLine.className = 'typing-error';
+                                errLine.textContent = 'zsh: command not found: ' + buf.split(' ')[0];
+                                el.appendChild(errLine);
+                                el.appendChild(document.createElement('br'));
+                                var promptLine = document.createElement('span');
+                                var promptCursor = document.createElement('span');
+                                promptCursor.className = 'typing-cursor';
+                                promptCursor.textContent = '|';
+                                promptLine.appendChild(document.createTextNode('$ '));
+                                promptLine.appendChild(promptCursor);
+                                el.appendChild(promptLine);
+                            }, 400);
+                        });
+                    }, 250);
+                });
+            }, 700);
+        });
+    }, 300);
 })();
 </script>
 {% endblock %}
