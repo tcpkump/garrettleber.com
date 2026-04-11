@@ -253,6 +253,12 @@ a:hover {
     height: auto;
     border: 1px solid var(--border);
     margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.post-featured-image.img-loaded {
+    opacity: 1;
 }
 
 /* Markdown content */
@@ -277,6 +283,12 @@ a:hover {
     height: auto;
     border: 1px solid var(--border);
     margin: 1rem 0;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.post-content img.img-loaded {
+    opacity: 1;
 }
 
 .post-content ul,

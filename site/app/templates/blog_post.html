@@ -30,4 +30,16 @@
         {{ content | safe }}
     </div>
 </article>
+
+{% block scripts %}
+<script>
+document.querySelectorAll('.post-featured-image, .post-content img').forEach(function(img) {
+    if (img.complete) {
+        img.classList.add('img-loaded');
+    } else {
+        img.addEventListener('load', function() { img.classList.add('img-loaded'); });
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}
