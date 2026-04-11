@@ -78,6 +78,7 @@
     el.appendChild(cursorEl);
 
     var buf = '';
+    var promptLine, promptCursor;
 
     function type(str, delay, done) {
         var i = 0;
@@ -111,22 +112,23 @@
             setTimeout(function() {
                 del('disgruntled'.length, 40, function() {
                     setTimeout(function() {
-                        type('passionate Software Engineer with a specialization in cloud infrastructure.', 55, function() {
+                        type('passionate software engineer with a specialization in cloud infrastructure.', 55, function() {
                             setTimeout(function() {
                                 cursorEl.remove();
                                 el.appendChild(document.createElement('br'));
                                 var errLine = document.createElement('span');
                                 errLine.className = 'typing-error';
-                                errLine.textContent = 'zsh: command not found: ' + buf.split(' ')[0];
+                                errLine.textContent = 'bash: ' + buf.split(' ')[0] + ': command not found';
                                 el.appendChild(errLine);
                                 el.appendChild(document.createElement('br'));
-                                var promptLine = document.createElement('span');
-                                var promptCursor = document.createElement('span');
+                                promptLine = document.createElement('span');
+                                promptCursor = document.createElement('span');
                                 promptCursor.className = 'typing-cursor';
                                 promptCursor.textContent = '|';
                                 promptLine.appendChild(document.createTextNode('$ '));
                                 promptLine.appendChild(promptCursor);
                                 el.appendChild(promptLine);
+                                setTimeout(startMash, 2000);
                             }, 400);
                         });
                     }, 250);
@@ -134,6 +136,45 @@
             }, 700);
         });
     }, 300);
+
+    function startMash() {
+        // [char, ms until next char]
+        // left roll r→s→t, right roll i→e→n, both hands interleaved
+        var mashSeq = [
+            ['r', 12], ['i', 28], ['s', 14], ['e', 25], ['t', 12], ['n', 55],
+            ['r', 10], ['i', 18], ['s', 12], ['e', 22], ['t', 10], ['n', 48],
+            ['a', 15], ['o', 20], ['r', 12], ['s', 10], ['t', 0]
+        ];
+        var mashNode = document.createTextNode('');
+        promptLine.insertBefore(mashNode, promptCursor);
+
+        var i = 0;
+        (function typeMash() {
+            if (i < mashSeq.length) {
+                var pair = mashSeq[i++];
+                mashNode.nodeValue += pair[0];
+                setTimeout(typeMash, pair[1] || 300);
+            } else {
+                setTimeout(showLogout, 900);
+            }
+        })();
+    }
+
+    function showLogout() {
+        promptCursor.remove();
+        el.appendChild(document.createElement('br'));
+        var logoutLine = document.createElement('span');
+        logoutLine.className = 'typing-logout';
+        logoutLine.textContent = 'logout';
+        el.appendChild(logoutLine);
+        setTimeout(function() {
+            el.appendChild(document.createElement('br'));
+            var closedLine = document.createElement('span');
+            closedLine.className = 'typing-logout';
+            closedLine.textContent = 'Connection to host closed.';
+            el.appendChild(closedLine);
+        }, 400);
+    }
 })();
 </script>
 {% endblock %}

@@ -443,6 +443,10 @@ a:hover {
     color: var(--error);
 }
 
+.typing-logout {
+    color: var(--muted);
+}
+
 /* > bullets on lists */
 .section ul li::marker,
 .post-content ul li::marker {
