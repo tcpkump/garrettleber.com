@@ -24,7 +24,7 @@ nix develop
 To run the dev server:
 
 ```sh
-uv run --project site/ flask --app app run
+uv run --project site/ flask --app app run --debug
 ```
 
 To build the static site:
