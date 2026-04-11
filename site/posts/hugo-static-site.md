@@ -12,7 +12,6 @@ tags:
 - "blog"
 - "static site"
 - "github actions"
-image: /images/hugo.jpg
 description: "My experience building a static site with Hugo and github actions"
 ---
 

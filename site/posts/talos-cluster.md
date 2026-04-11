@@ -10,11 +10,8 @@ tags:
 - "opentofu"
 - "homelab"
 - "proxmox"
-image: /images/talos.png
 description: "My experience deploying a Talos cluster in my homelab"
 ---
-
-## Introduction
 
 In this post, I'll go over my experience deploying a recent version of Kubernetes(K8s) in my homelab using Talos
 Linux and FluxCD, among other tooling.
