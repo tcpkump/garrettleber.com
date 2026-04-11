@@ -20,6 +20,7 @@
 </a>
 {% endfor %}
 
+<div id="shell-history"></div>
 <div class="shell-line">
     <span class="shell-prompt">$ cat </span>
     <input id="shell-input" class="shell-input" type="text" autocomplete="off" spellcheck="false" aria-label="blog post slug">
@@ -32,8 +33,27 @@
 const SLUGS = {{ posts | map(attribute='slug') | list | tojson }};
 const input = document.getElementById('shell-input');
 const completions = document.getElementById('shell-completions');
+const history = document.getElementById('shell-history');
 let tabMatches = [];
 let tabIndex = -1;
+
+function commitError(typed) {
+    const cmdLine = document.createElement('div');
+    cmdLine.className = 'shell-line';
+    cmdLine.innerHTML = '<span class="shell-prompt">$ cat </span><span class="shell-typed">' + typed + '</span>';
+    history.appendChild(cmdLine);
+
+    const errLine = document.createElement('div');
+    errLine.className = 'shell-error';
+    errLine.textContent = 'bash: ' + (typed || 'cat') + ': No such file or directory';
+    history.appendChild(errLine);
+
+    input.value = '';
+    completions.textContent = '';
+    tabMatches = [];
+    tabIndex = -1;
+    input.focus();
+}
 
 input.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
@@ -57,7 +77,7 @@ input.addEventListener('keydown', function(e) {
         if (SLUGS.includes(slug)) {
             window.location.href = '/blog/' + slug + '/';
         } else {
-            completions.innerHTML = '<span class="shell-error">bash: ' + (input.value || 'cat') + ': No such file or directory</span>';
+            commitError(input.value.trim());
         }
     } else {
         tabMatches = [];

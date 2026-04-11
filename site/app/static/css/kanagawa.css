@@ -600,11 +600,16 @@ a:hover {
 }
 
 /* Shell input on blog list */
+#shell-history {
+    margin-top: 1.25rem;
+}
+
 .shell-line {
     display: flex;
     align-items: center;
-    margin-top: 1.25rem;
+    margin: 0;
     font-size: 0.875rem;
+    line-height: 1.7;
 }
 
 .shell-prompt {
@@ -634,8 +639,15 @@ a:hover {
     padding-left: 0.1rem;
 }
 
+.shell-typed {
+    color: var(--foreground);
+}
+
 .shell-error {
     color: var(--error);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.7;
 }
 
 /* Responsive */
