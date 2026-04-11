@@ -19,4 +19,58 @@
     <span class="ls-title">{{ post.title }}</span>
 </a>
 {% endfor %}
+
+<div class="shell-line">
+    <span class="shell-prompt">$ cat </span>
+    <input id="shell-input" class="shell-input" type="text" autocomplete="off" spellcheck="false" aria-label="blog post slug">
+</div>
+<div id="shell-completions" class="shell-completions"></div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const SLUGS = {{ posts | map(attribute='slug') | list | tojson }};
+const input = document.getElementById('shell-input');
+const completions = document.getElementById('shell-completions');
+let tabMatches = [];
+let tabIndex = -1;
+
+input.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const val = input.value.replace(/\.md$/, '');
+        if (tabIndex === -1) {
+            tabMatches = SLUGS.filter(s => s.startsWith(val));
+        }
+        if (tabMatches.length === 0) return;
+        if (tabMatches.length === 1) {
+            input.value = tabMatches[0] + '.md';
+            completions.textContent = '';
+            tabIndex = 0;
+        } else {
+            tabIndex = (tabIndex + 1) % tabMatches.length;
+            input.value = tabMatches[tabIndex] + '.md';
+            completions.textContent = tabMatches.join('  ');
+        }
+    } else if (e.key === 'Enter') {
+        const slug = input.value.replace(/\.md$/, '').trim();
+        if (SLUGS.includes(slug)) {
+            window.location.href = '/blog/' + slug + '/';
+        } else {
+            completions.innerHTML = '<span class="shell-error">bash: ' + (input.value || 'cat') + ': No such file or directory</span>';
+        }
+    } else {
+        tabMatches = [];
+        tabIndex = -1;
+    }
+});
+
+input.focus();
+
+input.addEventListener('input', function() {
+    tabMatches = [];
+    tabIndex = -1;
+    completions.textContent = '';
+});
+</script>
 {% endblock %}

@@ -599,6 +599,45 @@ a:hover {
     color: var(--link);
 }
 
+/* Shell input on blog list */
+.shell-line {
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.shell-prompt {
+    color: var(--muted);
+    white-space: pre;
+    flex-shrink: 0;
+}
+
+.shell-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--foreground);
+    font-family: inherit;
+    font-size: inherit;
+    caret-color: var(--foreground);
+    flex: 1;
+    padding: 0;
+    width: 100%;
+}
+
+.shell-completions {
+    color: var(--primary);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+    min-height: 1.4em;
+    padding-left: 0.1rem;
+}
+
+.shell-error {
+    color: var(--error);
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     .terminal-window {
