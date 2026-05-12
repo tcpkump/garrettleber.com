@@ -13,6 +13,16 @@ The site (`site/`) is a Flask application that renders HTML using Jinja2 templat
 - [Frozen-Flask](https://frozen-flask.readthedocs.io/) — static site generator
 - [uv](https://docs.astral.sh/uv/) — Python package manager
 
+### Creating a new blog post
+
+Use the helper script to scaffold a new post with the current timestamp:
+
+```sh
+bash scripts/new-post.sh my-post-slug
+```
+
+This creates `site/posts/my-post-slug.md` with frontmatter pre-filled and `draft: true`. The slug (filename without `.md`) becomes the URL path under `/blog/`. Fill in the `title` and `description`, add your content, then set `draft: false` when ready to publish.
+
 ### Local development
 
 A Nix dev shell is provided with Python, uv, and pre-commit:
