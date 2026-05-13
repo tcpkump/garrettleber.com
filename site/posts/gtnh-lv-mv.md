@@ -126,3 +126,39 @@ OUTLINE / REWRITE GUIDE — delete this section before publishing
 - Hint that this might be the next post
 -->
 
+---
+
+
+I'm back in my semi-annual Minecraft phase right now, and this time I'm back on Gregtech: New Horizons (referred to as
+GTNH from here on out). I've found it to be a really relaxing way to spend my evenings lately. For those who aren't
+familiar, this is a Minecraft modpack that has a bit of a reputation for being incredibly difficult. It takes thousands
+of hours to "beat" the pack. It might sound strange to say that I find Minecraft's most difficult pack relaxing, but
+that's actually because I disagree with that assessment entirely. The pack just has tons and tons of content, and an
+incredible questbook/wiki, with a large community around it to make any hurdle easy to navigate. For this reason, it
+fixes my issue in vanilla where I login to my forever world and can't think of something to do. It's all laid out very
+clearly in front of me, but allows for many branches to explore at each point. I can login each night and expand my
+machinery, improve automation for some resources, farm, decorate my base, or explore, it's open to whatever I feel like
+doing. I always feel like there's something ahead of me. The best part of the pack _is_ the fact that it takes thousands
+of hours to finish. By accepting that I will likely never actually finish it, I actually play it to enjoy the journey
+rather than always trying to get to the next big thing.
+
+## The Tier System
+
+GTNH gates progression behind a [tier system](https://wiki.gtnewhorizons.com/wiki/Tier) consisting of 15 different
+tiers. Almost universally, each subsequent tier requires 4x the power of the previous tier. The only exceptions to this
+that I'm aware of are stone and steam, which are before you have electricity. The LV (Low Voltage) tier sets the bar,
+with machines requiring 32EU/tick (energy units). Don't worry, understanding the units for the purposes of this post
+isn't very important, just seeing the relationships between them. So, currently I'd say I'm right in between LV and MV
+(Medium Voltage),
+which is still very early game for GTNH. I have around 150 hours on this save, for reference. The wiki says that it
+takes around [2500 hours](https://wiki.gtnewhorizons.com/wiki/Beginner_Tips#Target_Audience) for an *experienced* solo
+player. To me that reads that the player has played the pack before, another couple thousand hours... What I'm getting
+at is that in this post we are looking at a very small piece of a very large picture.
+
+What is LV and MV really? LV is the first big "break" in the game that brings with it great strides in the efficiency of
+material processing. What a mouthful. This is best illustrated with an example. Making iron plates in the stone age
+requires using a hammer and two iron ingots. At first you'll be smelting one iron ore into a single ingot. In the steam
+age you get to improve both sides of this process. You can double your ore processing, so you get two ingots, and you
+get access to the Forge Hammer, which lets you create 2 plates with 3 ingots. Then, when you get to LV, you can process
+your ingots into plates 1:1. Most people power their first LV machines with steam using a steam turbine, but they tend to consume *much* more
+steam than actual steam machines. So I've just started dabbling in MV machines, which again take 4x the power (128EU/tick) of LV machines. My LV power sources are just not able to keep up with MV demands, so I immediately have to revisit my power generation. Right now, I generate around 14k Liters of steam per second, and an LV steam turbine uses about 1500L/s of steam. As you might have figured, MV would demand around 6000L/s of steam. I tend to be running 5+ machines for various processes at any given time, so this isn't sustainable. I have switched most of my LV machines to using creosote with semifluid generators, which also works well, but to keep a long story short, it also wouldn't be able to keep up with MV demand. Expanding either of these power sources can very quickly become unweildy, requiring dozens of generators or coke ovens (just trust me, it's an effort).
